@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
+import { Link, useHistory } from "react-router-dom";
 import heroesImg from "../../assets/heroes.png";
 import logoHeroes from "../../assets/logo.svg";
-import "./styles.scss";
 import api from "../../services/api";
+import "./styles.scss";
 
 export default function Logon() {
   const [id, setId] = useState("");
@@ -14,7 +14,6 @@ export default function Logon() {
     e.preventDefault();
     try {
       const response = await api.post("sessions", { id });
-      alert(`Login feito ${response.data.id}`);
       localStorage.setItem("ongId", id);
       localStorage.setItem("ongName", response.data.name);
       history.push("/profile");
@@ -32,7 +31,7 @@ export default function Logon() {
             type="text"
             placeholder="Sua ID"
             value={id}
-            onChange={e => setId(e.target.value)}
+            onChange={(e) => setId(e.target.value)}
           />
           <button type="submit" className="button">
             Entrar
