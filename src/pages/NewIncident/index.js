@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
+import { Link, useHistory } from "react-router-dom";
 import logoHeroes from "../../assets/logo.svg";
-import "./styles.scss";
 import api from "../../services/api";
+import "./styles.scss";
 
 export default function NewIncident() {
   const history = useHistory();
@@ -17,10 +17,10 @@ export default function NewIncident() {
   async function handleNewIncident(e) {
     e.preventDefault();
     try {
-      const response = await api.post("incidents", data, {
+      await api.post("incidents", data, {
         headers: {
-          Authorization: ongId
-        }
+          Authorization: ongId,
+        },
       });
       alert("Sucesso");
       history.push("/profile");
@@ -47,17 +47,17 @@ export default function NewIncident() {
             type="text"
             placeholder="Titulo do caso"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <textarea
             placeholder="Descição"
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           ></textarea>
           <input
             placeholder="Valor em reais"
             value={value}
-            onChange={e => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value)}
           />
           <button className="button" type="submit">
             Cadastrar
